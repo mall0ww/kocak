@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's Your Birthday!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            animation: backgroundFade 10s infinite alternate;
+        }
+
+        @keyframes backgroundFade {
+            0% { background-color: #FFB3BA; } /* Pastel Merah Muda */
+            14% { background-color: #FFDFBA; } /* Pastel Oranye */
+            28% { background-color: #FFFFBA; } /* Pastel Kuning */
+            42% { background-color: #BAFFC9; } /* Pastel Hijau */
+            57% { background-color: #BAE1FF; } /* Pastel Biru */
+            71% { background-color: #D5BAFF; } /* Pastel Nila */
+            85% { background-color: #FFBAF0; } /* Pastel Ungu */
+            100% { background-color: #FFB3BA; } /* Kembali ke Pastel Merah Muda */
+        }
+
+    .container {
+      max-width: 400px;
+    }
+    h1, p {
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+    h1 {
+      font-size: 3em;
+      animation-delay: 0.5s;
+    }
+    p {
+      animation-delay: 1.5s;
+    }
+    .countdown {
+      font-size: 2em;
+      margin-top: 1rem;
+      animation-delay: 2.5s;
+      opacity: 0;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 1.2em;
+      background-color: #ff6b81;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ff4757;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .popup-content {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 300px;
+      text-align: center;
+      animation: popIn 0.4s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Level Up Day Gurl! 🎉</h1>
+    <p>Hope your day is filled with lots of love and happiness ya sengg!</p>
+    <div class="countdown" id="countdown">2... 1...</div>
+    <button class="btn" onclick="showPopup()">Click me!</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <p>CIE ADA YANG ULTAH NII HEHE🎂💖 janlup klik link yang gw kasi di tele 5 menit lagi yaa </p>
+      <button class="btn" onclick="hidePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    let countdownNum = 2;
+    const countdownEl = document.getElementById('countdown');
+
+    const countdownInterval = setInterval(() => {
+      countdownEl.textContent = countdownNum > 0 ? countdownNum + '...' : '🎂 Surprise!';
+      countdownNum--;
+
+      if (countdownNum < 0) clearInterval(countdownInterval);
+    }, 1000);
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
